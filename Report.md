@@ -232,4 +232,5 @@ To address the operational inefficiency in **Insight 5**, the management team sh
 This report has demonstrated the end-to-end process of designing a Business Intelligence solution using Power BI, starting from data acquisition and cleaning to advanced DAX calculations and insightful dashboard design. The analytical insights derived from the dataset have been translated into strategic recommendations that can drive business growth and operational efficiency. By leveraging the full capabilities of Power BI, this solution provides a robust framework for data-driven decision-making in the retail sector.
 
 ## References
-- Kaggle Dataset: [Retail Store Sales: Dirty for Data Cleaning]
+- Kaggle Dataset: [Retail Store Sales: Dirty for Data Cleaning](https://www.kaggle.com/datasets/ahmedmohamed2003/retail-store-sales-dirty-for-data-cleaning)
+- GitHub Repository: [Business-Intelligence-Final-Project](https://github.com/lavendermathias/Business-Intelligence-Final-Project)

@@ -84,3 +84,10 @@ The objective is to design a BI solution that identifies key sales drivers acros
 ## 13\. Conclusion
 
 This project successfully transformed a high-volume, error-prone dataset into a reliable analytical asset. By applying rigorous data hygiene, an optimized Star Schema, and strategic DAX logic, the resulting interactive dashboard uncovers actionable realities. The insights derived from AI-driven cross-filtering provide stakeholders with fact-based pathways to launch targeted loyalty programs, optimize regional inventory, and restructure discount strategies to protect profit margins.
+
+## References
+- Kaggle Dataset: [Retail Store Sales: Dirty for Data Cleaning](https://www.kaggle.com/datasets/ahmedmohamed2003/retail-store-sales-dirty-for-data-cleaning)
+- GitHub Repository: [Business-Intelligence-Final-Project](https://github.com/lavendermathias/Business-Intelligence-Final-Project)
+
+## license
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details
