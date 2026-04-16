@@ -14,7 +14,7 @@
 - Domain: Retail and Sales Analytics.
 - Business Problem: The objective is to design a BI solution that identifies key sales drivers across various product categories and customer demographics. Furthermore, the raw transactional data suffers from systemic entry errors, missing values, and inconsistencies. The problem includes establishing a robust data cleaning pipeline to ensure stakeholders are making decisions based on accurate, reliable performance metrics.
 2. Dataset Source 
-- The data was sourced from Kaggle: [Retail Store Sales: Dirty for Data Cleaning](https://www.kaggle.com/datasets/ahmedmohamed2003/retail-store-sales-dirty-for-data-cleaning). It contains 12,575 transactional records, exceeding the 9,000-row requirement.
+- I sourced the data from Kaggle: [Retail Store Sales: Dirty for Data Cleaning](https://www.kaggle.com/datasets/ahmedmohamed2003/retail-store-sales-dirty-for-data-cleaning). It contains 12,575 transactional records, exceeding the 9,000-row requirement.
 ![alt text](Images/image.png)
 3. Key Tables, Fields, and Relationships Although the data is provided as a single flat .csv file, it contains sufficient fields to be transformed into a logical relational Star Schema model:
 - Fact_Sales: Will serve as the main transactional table containing numerical variables like Quantity and Total_Amount, along with a date field.
@@ -28,30 +28,31 @@
 
 ## Part B: Data Cleaning and Transformation in Power Query (20 Marks)
 
-1) Importing the Dataset into Power Query
+1) I imported the Dataset into Power Query
 ![alt text](Images/image-2.png)
 
 ### Data cleaning steps
-- Power Query Before cleaning:
+- Power Query Before i started the cleaning process:
 ![alt text](Images/image-3.png)
 
-- Replaced missing values with 0
+- I found missing values so i replaced with 0 so that it does not affect the calculations and analysis.
 ![alt text](Images/image-4.png)
 
-- Removed duplicates and standardized date formats
-- Fixing data types: it involved converting numerical Columns Price, Quantity, and Total_Amount to Decimal Number or Fixed Decimal Number (Currency).
+- i went ahead and Removed duplicates and standardized date formats to ensure consistency across the dataset.
+
+- I also fixed data types: This involved converting numerical Columns Price, Quantity, and Total_Amount to Decimal Number or Fixed Decimal Number (Currency).
 
 - Power Query After cleaning:
 ![alt text](Images/image-5.png)
 
 ### Data Transformation Steps
-- Creating a custom column - to fill in the missing `Price_per_Item` by dividing `Total_Amount` by `Quantity`.
+- I craeted a custom column - to fill in the missing `Price_per_Item` by dividing `Total_Amount` by `Quantity`.
 ```
 Price_per_Item = if [Price_per_Item] = null then [Total_Amount] / [Quantity] else [Price_per_Item]
 ```
 ![alt text](Images/image-6.png)
 
-- Extracted date parts: Created new columns for Year, Month, from the `Date` field to enable time-based analysis.
+- Here i extracted date parts: Created new columns for Year, Month, from the `Date` field to enable time-based analysis.
 ![alt text](Images/image-7.png)
 
 - Conditional column for Price segmentation
@@ -87,7 +88,7 @@ Dimension Tables (Dim_Product, Dim_Date, Dim_Customer, Dim_Payment, Dim_Location
 - **Cross-Filter Direction**: The direction is set to 'Single', flowing from the dimension table to the fact table. This ensures that filters applied to descriptive fields correctly propagate to the numerical values while preventing circular dependencies and improving model performance.
 
 ### Date table
-The Dim_Date table was created as a dedicated reference for time-based analysis.
+I created a Dim_Date table as a dedicated reference for time-based analysis.
 - Fields included: Month, Month Name, Transaction Date, and Year.
 - Role: It is related to the Fact_Sales[Transaction Date] field to enable Time Intelligence analysis, such as year-over-year growth and monthly performance monitoring required in later exam stages.
 
@@ -183,9 +184,9 @@ Measures are dynamic calculations used in your visuals.
 
 **Page 3: Insights and Performance Monitoring**
 ![alt text](Images/image-24.png)
-- "The dashboard follows a 'Summary-to-Detail' design philosophy. Page 1 uses high-level KPIs and trends for quick executive review. Page 2 provides granular tools like the Decomposition Tree and Matrix for operational analysts. Page 3 utilizes AI-driven features like Anomaly Detection to highlight business risks and performance gaps. A consistent color palette and clear typography were used to ensure accessibility and professional aesthetics."
+- The dashboard I created follows a 'Summary-to-Detail' design philosophy. Page 1 uses high-level KPIs and trends for quick executive review. Page 2 provides granular tools like the Decomposition Tree and Matrix for operational analysts. Page 3 utilizes AI-driven features like Anomaly Detection to highlight business risks and performance gaps. A consistent color palette and clear typography were used to ensure accessibility and professional aesthetics."
 
-- The dashboard is fully interactive. Users can use the Slicers to filter the entire report by Location or Year. Cross-filtering is enabled; for example, clicking a specific category in the Bar Chart on Page 1 will automatically filter the Trend Chart to show only that category's performance. On Page 2, Drill-down functionality allows users to move from high-level categories to specific SKU performance with a single click."
+- My dashboard is fully interactive. Users can use the Slicers to filter the entire report by Location or Year. Cross-filtering is enabled; for example, clicking a specific category in the Bar Chart on Page 1 will automatically filter the Trend Chart to show only that category's performance. On Page 2, Drill-down functionality allows users to move from high-level categories to specific SKU performance with a single click."
 
 ---
 
@@ -216,20 +217,26 @@ Cross-filtering the **Discount Applied** field against **Total Revenue** reveals
 
 ### **2. Actionable Recommendations**
 
+Here is the revised section, rewritten to ensure it reflects your individual work and analysis using the first-person ("I") perspective:
+
+### 2. Actionable Recommendations
+
 **Recommendation 1: Implementation of a Tiered Loyalty Program**
-To mitigate the risk of high-value customer churn identified in **Insight 1**, the business should launch a "VIP Loyalty Tier" specifically for the **High Value Transaction** segment. This program should offer exclusive early access to new items and specialized discounts, aiming to increase the retention of the 20% of customers driving 60% of the revenue.
+To mitigate the risk of high-value customer churn identified in my first insight, I recommend launching a "VIP Loyalty Tier" specifically for the High Value Transaction segment. I suggest designing this program to offer exclusive early access to new items and specialized discounts, aiming to increase the retention of the 20% of customers driving 60% of the revenue.
 
 **Recommendation 2: Regional Inventory and Marketing Optimization**
-Based on the geographic imbalance in **Insight 2**, the business should reallocate inventory. Suburban locations should focus on high-turnover "Convenience" items to match their high transaction volume, while urban centers should receive expanded "Premium" stock. Marketing spend should be redirected toward suburban locations during Month 2 of the quarter to combat the cyclical revenue contraction identified in **Insight 3**.
+Based on the geographic imbalance I identified in **Insight 2**, I advise reallocating inventory. I recommend that suburban locations focus on high-turnover "Convenience" items to match their high transaction volume, while urban centers receive expanded "Premium" stock. Furthermore, I propose redirecting marketing spend toward suburban locations during Month 2 of the quarter to combat the cyclical revenue contraction I noted in Insight 3.
 
 **Recommendation 3: Strategic Discount Restructuring**
-To address the operational inefficiency in **Insight 5**, the management team should move away from "Store-Wide" sales toward "Performance-Based" discounting. Using the **Top Category Rank** measure, discounts should be strictly limited to the bottom 20% of performers to clear slow-moving stock, while the top-performing "Electronics" category should focus on bundle-pricing (e.g., "Buy 2, Save 10%") to increase units per transaction without eroding base margins.
+To address the operational inefficiency I found in **Insight 5**, I strongly recommend moving away from "Store-Wide" sales toward "Performance-Based" discounting. Using my Top Category Rank measure, I advise strictly limiting discounts to the bottom 20% of performers to clear slow-moving stock. Meanwhile, I suggest focusing the top-performing "Electronics" category on bundle-pricing (e.g., "Buy 2, Save 10%") to increase units per transaction without eroding base margins.
 
 
 *"The insights provided were derived using cross-filtering and AI-driven features like Anomaly Detection to ensure they are grounded in statistical fact rather than surface-level observation. This ensures the recommendations are both data-driven and actionable for stakeholders."*
 
-## Conclusion
-This report has demonstrated the end-to-end process of designing a Business Intelligence solution using Power BI, starting from data acquisition and cleaning to advanced DAX calculations and insightful dashboard design. The analytical insights derived from the dataset have been translated into strategic recommendations that can drive business growth and operational efficiency. By leveraging the full capabilities of Power BI, this solution provides a robust framework for data-driven decision-making in the retail sector.
+Here is the personalized version of your conclusion, rewritten to reflect your individual ownership of the project and analysis:
+
+## 13. Conclusion
+In this report, I have demonstrated the end-to-end process of designing a Business Intelligence solution using Power BI. My workflow covered everything from initial data acquisition and rigorous cleaning in Power Query, to developing advanced DAX calculations and designing an interactive executive dashboard. I have translated the analytical insights derived from this dataset into strategic, actionable recommendations aimed at driving business growth and operational efficiency. Ultimately, by leveraging the full capabilities of Power BI, I have built a robust framework that empowers data-driven decision-making within the retail sector.
 
 ## References
 - Kaggle Dataset: [Retail Store Sales: Dirty for Data Cleaning](https://www.kaggle.com/datasets/ahmedmohamed2003/retail-store-sales-dirty-for-data-cleaning)
